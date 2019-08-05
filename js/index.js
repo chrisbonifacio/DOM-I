@@ -49,17 +49,19 @@ logo.setAttribute("src", siteContent["nav"]["img-src"]);
 const doc = document;
 
 // Nav Bar
-const nav = doc.querySelectorAll("nav a");
-console.log(nav);
+const nav = doc.querySelector("nav");
+const navLink = doc.querySelectorAll("nav a");
 
-nav[0].textContent = siteContent["nav"]["nav-item-1"];
-nav[1].textContent = siteContent["nav"]["nav-item-2"];
-nav[2].textContent = siteContent["nav"]["nav-item-3"];
-nav[3].textContent = siteContent["nav"]["nav-item-4"];
-nav[4].textContent = siteContent["nav"]["nav-item-5"];
-nav[5].textContent = siteContent["nav"]["nav-item-6"];
+nav.style.flexWrap = "wrap";
 
-nav.forEach(e => {
+navLink[0].textContent = siteContent["nav"]["nav-item-1"];
+navLink[1].textContent = siteContent["nav"]["nav-item-2"];
+navLink[2].textContent = siteContent["nav"]["nav-item-3"];
+navLink[3].textContent = siteContent["nav"]["nav-item-4"];
+navLink[4].textContent = siteContent["nav"]["nav-item-5"];
+navLink[5].textContent = siteContent["nav"]["nav-item-6"];
+
+navLink.forEach(e => {
   e.style.color = "green";
 });
 
@@ -175,12 +177,14 @@ footerParagraph.textContent = siteContent["footer"]["copyright"];
 const buttons = doc.createElement("div");
 const container = doc.querySelector(".container");
 
-container.append(buttons);
+nav.prepend(buttons);
 
 buttons.classList.add("buttons");
 buttons.style.display = "flex";
 buttons.style.justifyContent = "center";
 buttons.style.alignItems = "center";
+buttons.style.width = "100%";
+buttons.style.marginBottom = "1em";
 
 console.log(buttons);
 
@@ -205,7 +209,7 @@ buttons.append(darkModeButton);
 function darkMode() {
   doc.body.style.backgroundColor = "rgb(60, 60, 60)";
   doc.body.style.color = "#fff";
-  nav.forEach(e => {
+  navLink.forEach(e => {
     e.style.color = "yellow";
   });
 }
@@ -236,7 +240,7 @@ function lightMode() {
   doc.body.style.color = "#000";
   lightModeButton.style.backgroundColor = "#fff";
   lightModeButton.style.color = "#121212";
-  nav.forEach(e => {
+  navLink.forEach(e => {
     e.style.color = "green";
   });
 }
