@@ -19,7 +19,7 @@ let so = 9
 let msh = 9
 let mst = 9
 
-setInterval(() => {
+let interval = setInterval(() => {
   if (mst <= 0) {
     if (st === 0 && so === 0 && msh === 0) {
       mst = 0
@@ -50,4 +50,9 @@ setInterval(() => {
   secondOnes.textContent = so
   msHundreds.textContent = msh
   msTens.textContent = mst
+
+  if (st === 0 && so === 0 && msh === 0 && mst === 0) {
+    clearInterval(interval)
+  }
+  console.log("still running")
 }, 10)
